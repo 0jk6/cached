@@ -7,7 +7,7 @@ import (
 	cacheserver "cached.0jk6.github.io/internal"
 )
 
-func main(){
+func main() {
 
 	if len(os.Args) < 2 {
 		fmt.Println("-------------------------------------")
@@ -19,7 +19,7 @@ func main(){
 
 	port := ":" + os.Args[1]
 
-	server := cacheserver.TCPServer {
+	server := cacheserver.TCPServer{
 		LogFile: "./wal.log",
 	}
 

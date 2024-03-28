@@ -8,7 +8,7 @@ import (
 )
 
 type Cache struct {
-	mp sync.Map
+	mp      sync.Map
 	LogFile string
 }
 

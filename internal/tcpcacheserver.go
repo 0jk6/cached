@@ -11,7 +11,7 @@ type TCPServer struct {
 	LogFile string
 }
 
-func (server *TCPServer) ListenTCP(port string){
+func (server *TCPServer) ListenTCP(port string) {
 	cache := &Cache{
 		LogFile: server.LogFile,
 	}
@@ -38,8 +38,7 @@ func (server *TCPServer) ListenTCP(port string){
 	}
 }
 
-
-func handleClient(conn net.Conn, cache *Cache){
+func handleClient(conn net.Conn, cache *Cache) {
 	defer conn.Close()
 
 	//read incoming data into a buffer
@@ -72,7 +71,7 @@ func handleClient(conn net.Conn, cache *Cache){
 func processData(data string, cache *Cache) (string, bool) {
 	//split data string
 	tokens := strings.Fields(data)
-	resp:= ""
+	resp := ""
 	closeConn := false
 
 	if len(tokens) == 0 {
@@ -85,19 +84,19 @@ func processData(data string, cache *Cache) (string, bool) {
 		if len(tokens) >= 2 {
 			return cache.getData(tokens[1]), false
 		} else {
-			return "not enough args\r\n",false
+			return "not enough args\r\n", false
 		}
 	} else if tokens[0] == "set" {
 		if len(tokens) >= 3 {
 			return cache.storeData(tokens[1], tokens[2]), false
 		} else {
-			return "not enough args\r\n",false
+			return "not enough args\r\n", false
 		}
 	} else if tokens[0] == "del" {
 		if len(tokens) >= 2 {
 			return cache.deleteData(tokens[1]), false
 		} else {
-			return "not enough args\r\n",false
+			return "not enough args\r\n", false
 		}
 	} else if tokens[0] == "exit" {
 		resp = "exiting...\r\n"
