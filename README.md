@@ -1,25 +1,23 @@
 # cached
 
-simple key, value store
+A distributed key-value store using Raft algorithm.
 
-### how to run?
-```
-make run port=3000
+Replicates key-value server's data to all the other nodes in the cluster. Elects a leader based on the commit indices of the nodes
 
-or
+### How to run
 
-make build
+`make build` or `go build cmd/main.go`
 
-./main port-number
+Run the key-value server: `./main <port>`
 
-eg: ./main 3000
+Run the raft cluster: `./main <node1> <node2> <node3> ...`
+
+example:
+
+run `./main 3000`, `./main 3001`, `./main 3002` in 3 different terminals
+
+run the raft cluster using: `./main http://localhost:3000 http://localhost:3001 http://localhost:3002`
 
 
-then use nc or telnet to connect to the server
-
-supported commands
-
-SET key value
-GET key
-DEL key
-```
+###### Note
+This implementation uses basic ideas of Raft, just to make myself comfortable with distributed systems. It's probably the worst implementation of the Raft algorithm, but it works!!!
