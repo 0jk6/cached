@@ -22,7 +22,7 @@ func main() {
 		}
 		fmt.Printf("Raft cluster started with %d nodes\n", len(os.Args)-1)
 		raft.CreateCluster(os.Args[1:])
-		raft.ScheduleElection(10)
+		raft.ScheduleElection(1)
 	} else {
 		port := ":" + os.Args[1]
 
