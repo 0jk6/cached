@@ -231,7 +231,7 @@ func (r *Raft) replicateLogs() {
 	}
 
 	leaderCommitIndex := string(data)
-	// fmt.Println(leaderCommitIndex)
+	fmt.Println(leaderCommitIndex)
 
 	leaderLogEntryBytes, _ := base64.StdEncoding.DecodeString(leaderLogEntryBase64)
 	leaderLogEntry := string(leaderLogEntryBytes)
